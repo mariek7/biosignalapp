@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.env
+.vscode/
+.DS_Store
+todo.txt
+tests/
+data/plots/
+data/recordings/
+data_recording_*
+zz_archive/
+start_realtime.sh
+api_server.log
+acquire.py
