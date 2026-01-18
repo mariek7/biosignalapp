@@ -1,7 +1,7 @@
 # App structure and user guide
 
 ## Overview
-This is a Python application for acquiring, processing and visualizing biosignals from BITalino devices via Bluetooth. It provides both a **GUI** (PyQt5) and **command-line** interfaces.
+This is a Python application for acquiring, processing and visualizing biosignals from BITalino devices via Bluetooth.
 
 
 ## Quick start
@@ -13,7 +13,7 @@ Install:
 pip install -r requirements.txt
 ```
 
-Create `.env` file (optional):
+Create `.env` file:
 ```dotenv
 # rfcomm device path
 MAC_ADDRESS=/dev/rfcomm0
