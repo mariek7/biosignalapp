@@ -220,7 +220,7 @@ data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt
 | A1 - A6 | `A1` - `A6` | Analog input | Sensors (ECG, EMG, ACC, EDA, etc.) |
 | I1 | `D0` | Digital input | Button, switch, or digital sensor |
 | 02/I2 | `D1` | Digital input | Button, switch, or digital sensor |
-| PWM | - | Digital output | Control LEDs, motors (not acquired) |
+| PWM | - | Digital output (Control LEDs, motors) | - |
 
 ---
 
