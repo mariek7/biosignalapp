@@ -113,12 +113,12 @@ curl -X POST http://127.0.0.1:8000/bitalino-data/ \
 **Purpose:** Signal types and their properties (unit, range, sampling rate, transfer functions for each type)
 
 **Signals:**
-- `ECG` - Electrocardiogram (mV, 1000 Hz)
-- `EEG` - Electroencephalogram (μV, 100 Hz)
-- `EMG` - Electromyography (mV, 1000 Hz)
-- `ACC` - Accelerometer (g, 100 Hz)
-- `EDA` - Electrodermal Activity (μS, 4 Hz)
-- `None` - Raw data (100 Hz)
+- `ECG` - Electrocardiogram
+- `EEG` - Electroencephalogram
+- `EMG` - Electromyography
+- `ACC` - Accelerometer
+- `EDA` - Electrodermal Activity
+- `None` - Raw data
 
 ---
 
@@ -173,7 +173,6 @@ Graphical interface for data acquisition and playback
 python3 main.py
 ```
 
-**Workflow:**
 1. Choose mode (Acquire data / Load from file)
 2. For acquiring select channels and signal types / For playback load file to play
 3. Click "Start"
@@ -182,14 +181,10 @@ python3 main.py
 
 ---
 
-### 2. **Commandline acquisition** (`acquire.py`)
+### 2. (TBD) **Commandline acquisition**
 **Use:** Quick terminal-based acquisition without GUI
 
 ```bash
-# Basic usage (reads MAC from .env if --mac omitted)
-python3 acquire.py --mac <MAC_ADDRESS> -c A1
-
-# Multiple channels
 python3 acquire.py --mac <MAC_ADDRESS> -c A1,D1
 
 ```
@@ -220,20 +215,12 @@ data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt
 
 ## BITalino Hardware Pin Mapping
 
-**Physical pins on your BITalino board map to software channels as follows:**
-
 | Physical Pin | Software Channel | Type | Use |
 |--------------|------------------|------|-----|
 | A1 - A6 | `A1` - `A6` | Analog input | Sensors (ECG, EMG, ACC, EDA, etc.) |
 | I1 | `D0` | Digital input | Button, switch, or digital sensor |
 | 02/I2 | `D1` | Digital input | Button, switch, or digital sensor |
-| 01 | `D2` | Digital input | Button, switch, or digital sensor |
 | PWM | - | Digital output | Control LEDs, motors (not acquired) |
-
-**Example:**
-- To read button on pin **I1** → select channel `D0` in GUI
-- To read button on pin **02/I2** → select channel `D1` in GUI
-- To read accelerometer on pins **A1-A3** → select channels `A1,A2,A3` with signal type "acc"
 
 ---
 
@@ -241,7 +228,7 @@ data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt
 
 ### Bluetooth connection issues
 
-**Important:** BITalino devices don't need to be "connected" via bluetoothctl. 
+**BITalino devices don't need to be "connected" via bluetoothctl. 
 They only need to be **paired** and **trusted**. The application connects directly via RFCOMM.
 
 **Initial pairing (one-time setup):**
@@ -253,7 +240,7 @@ bluetoothctl
 # > exit
 ```
 
-**After pairing, just run the GUI:**
+**After pairing, run the GUI:**
 ```bash
 ./start_gui.sh
 ```
