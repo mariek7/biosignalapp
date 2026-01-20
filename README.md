@@ -1,6 +1,6 @@
 # BITalino biosignals acquisition for Linux
 
-This application was developed to provide BITalino data acquisition, visualization, and playback functionality for Linux users. The official OpenSignals software for BITalino currently supports only Windows and macOS. There's no official Linux support atm. This independent implementation provides BITalino acquisition on Linux without official PLUX software.
+This application was developed to provide BITalino data acquisition, visualization, and playback functionality for Linux users. The official OpenSignals software for BITalino currently supports only Windows and macOS. This independent implementation provides BITalino acquisition on Linux without official PLUX software.
 - PyBluez/pySerial for direct direct Bluetooth RFCOMM and serial communication
 - independent device protocol implementation, handling low-level device communication (no official libs needed)  
 - FastAPI backend for device communication
