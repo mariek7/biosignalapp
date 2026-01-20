@@ -1,6 +1,4 @@
-# App structure and user guide
-
-## Overview
+# Overview
 This application was developed to provide BITalino data acquisition, visualization, and playback functionality for Linux users. The official OpenSignals software for BITalino currently supports only Windows and macOS. There's no official Linux support atm. 
 
 Custom implementation uses:
