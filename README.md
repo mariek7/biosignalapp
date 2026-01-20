@@ -59,14 +59,14 @@ python3 main.py
 
 **Filename Format:**
 ```
-data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt
+data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt # type from the first channel selected
 ```
 
 ---
 
 ## Architecture
 
-The application has three main components: PyQt5 GUI for user interaction, FastAPI backend for device communication and hardware abstraction and data processing.
+The application has three main components: PyQt5 GUI for user interaction, FastAPI backend for device communication, and hardware abstraction and data processing.
 
 ```mermaid
 graph LR
@@ -124,6 +124,7 @@ graph LR
 - **pandas** - Dataframe parsing and saving
 - **requests** - API client with retries
 - **python-dotenv** - Load `.env` configuration
+
 
 ---
 
