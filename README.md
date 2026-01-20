@@ -71,7 +71,7 @@ data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt # type from the first channel 
 
 ## Architecture
 
-The application has three main components: PyQt5 GUI for user interaction, FastAPI backend for device communication, and hardware abstraction and data processing.
+The application has three layers: PyQt5 GUI for user interaction, hardware abstraction and data processing, and FastAPI backend for device communication.
 
 ```mermaid
 graph LR
