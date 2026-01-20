@@ -252,7 +252,9 @@ Graphical interface for data acquisition and playback
 - `toggle_all_plots_visibility()` - Hide/show all plots with one button
 - `init_data()` - Initialize for data acquisition
 - `load_file()` - Load data file to play
-- `BITalino Hardware Pin Mapping
+
+
+## BITalino Hardware Pin Mapping
 
 | Physical Pin | Software Channel | Type | Use |
 |--------------|------------------|------|-----|
@@ -289,7 +291,7 @@ sudo rfcomm release /dev/rfcomm0
 sudo rfcomm bind /dev/rfcomm0 <MAC_ADDRESS> 1
 ```
 
---
+---
 
 ### Device permissions
 
