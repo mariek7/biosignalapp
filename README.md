@@ -257,8 +257,7 @@ Graphical interface for data acquisition and playback
 | Physical Pin | Software Channel | Type | Use |
 |--------------|------------------|------|-----|
 | A1 - A6 | `A1` - `A6` | Analog input | Sensors (ECG, EMG, ACC, EDA, etc.) |
-| I1 | `D0` | Digital input | Button, switch, or digital sensor |
-| 02/I2 | `D1` | Digital input | Button, switch, or digital sensor |
+| I1, 02/I2 | `D0`, `D1` | Digital input | Button, switch, or digital sensor |
 | PWM | - | Digital output (Control LEDs, motors) | - |
 
 ---
@@ -290,7 +289,7 @@ sudo rfcomm release /dev/rfcomm0
 sudo rfcomm bind /dev/rfcomm0 <MAC_ADDRESS> 1
 ```
 
----
+--
 
 ### Device permissions
 
