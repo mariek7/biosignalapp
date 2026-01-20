@@ -38,6 +38,32 @@ python3 main.py
 
 ---
 
+## Entry points
+
+### **GUI App** (`main.py`)
+**Use:** Interactive data acquisition with real-time visualization
+
+```bash
+python3 main.py
+```
+
+1. Choose mode (Acquire data / Load from file)
+2. For acquiring select channels and signal types / For playback load file to play
+3. Click "Start"
+4. Data displays in real-time
+5. Click "Stop"
+
+---
+
+###  Saved data files in `data/recordings/`
+
+**Filename Format:**
+```
+data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt
+```
+
+---
+
 ## Architecture
 
 The application has three main components: PyQt5 GUI for user interaction, FastAPI backend for device communication and hardware abstraction and data processing.
@@ -98,6 +124,17 @@ graph LR
 - **pandas** - Dataframe parsing and saving
 - **requests** - API client with retries
 - **python-dotenv** - Load `.env` configuration
+
+---
+
+## BITalino Hardware Pin Mapping
+
+| Physical Pin | Software Channel | Type | Use |
+|--------------|------------------|------|-----|
+| A1 - A6 | `A1` - `A6` | Analog input | Sensors (ECG, EMG, ACC, EDA, etc.) |
+| I1 | `D0` | Digital input | Button, switch, or digital sensor |
+| 02/I2 | `D1` | Digital input | Button, switch, or digital sensor |
+| PWM | - | Digital output (Control LEDs, motors) | - |
 
 ---
 
@@ -214,44 +251,7 @@ Graphical interface for data acquisition and playback
 - `toggle_all_plots_visibility()` - Hide/show all plots with one button
 - `init_data()` - Initialize for data acquisition
 - `load_file()` - Load data file to play
-- `update_playback()`
-- `toggle_play_pause()`
-- `update_button_states()`
-- `hide_show_plot_widget()`
-- `start_plotting()`
-- `stop_plotting_and_save()`
-- `update_plot()`
-- `rebuild_plots()`
-
----
-
-## Entry points
-
-### **GUI App** (`main.py`)
-**Use:** Interactive data acquisition with real-time visualization
-
-```bash
-python3 main.py
-```
-
-1. Choose mode (Acquire data / Load from file)
-2. For acquiring select channels and signal types / For playback load file to play
-3. Click "Start"
-4. Data displays in real-time
-5. Click "Stop"
-
----
-
-###  Saved data files in `data/recordings/`
-
-**Filename Format:**
-```
-data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt
-```
-
----
-
-## BITalino Hardware Pin Mapping
+- `BITalino Hardware Pin Mapping
 
 | Physical Pin | Software Channel | Type | Use |
 |--------------|------------------|------|-----|
