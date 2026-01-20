@@ -24,9 +24,8 @@ DEVICE_MAC=<MAC_ADDRESS>
 
 **Option A: GUI with API**
 ```bash
-./start_gui.sh
+./start_gui.sh # Starts both FastAPI server and GUI
 ```
-Starts both FastAPI server and GUI
 
 **Option B: Manual (separate terminals)**
 ```bash
@@ -37,11 +36,72 @@ python3 -m uvicorn api.server:app --host 127.0.0.1 --port 8000
 python3 main.py
 ```
 
-**TBD: Terminal acquisition**
+---
+
+## Architecture
+
+The application has three main components: PyQt5 GUI for user interaction, FastAPI backend for device communication and hardware abstraction and data processing.
+
+```mermaid
+graph LR
+
+    subgraph SERVER["api.server"]
+        S1["FastAPI"]
+        S2["Uvicorn"]
+        S3["python-dotenv"]
+    end
+
+    subgraph SIGTYPE["core.signal_type"]
+        ST1["NumPy"]
+    end
+   
+    subgraph DEVICE["core.device"]
+        D1["pySerial"]
+        D2["PyBluez"]
+        D3["NumPy"]
+    end
+    
+    subgraph FILEIO["core.file_io"]
+        F1["Pandas"]
+        F2["Matplotlib"]
+        F3["Requests"]
+        F4["NumPy"]
+        F5["python-dotenv"]
+    end
+    
+        subgraph MAINWIN["ui.main_window"]
+        M2["PyQt5"]
+        M3["Matplotlib"]
+        M4["Requests"]
+        M5["Pandas"]
+        M6["NumPy"]
+    end
+
+        subgraph MAIN["main.py"]
+        M1["PyQt5"]
+    end
+    
+    style MAIN fill:#c8e6c9
+    style MAINWIN fill:#c8e6c9
+    style SERVER fill:#ffe0b2
+```
+
+## Dependencies
+
+- **Python 3.7+**
+- **PyQt5** - GUI framework
+- **FastAPI/Uvicorn** - REST API backend
+- **Matplotlib** - Real-time plotting
+- **PyBluez** - Bluetooth connectivity
+- **numpy** - Data processing
+- **pyserial** - Serial communication
+- **pandas** - Dataframe parsing and saving
+- **requests** - API client with retries
+- **python-dotenv** - Load `.env` configuration
 
 ---
 
-## Folder structure
+### Folder structure
 
 ```
 biosignals/
@@ -49,7 +109,8 @@ biosignals/
 │   └── server.py          # HTTP endpoints for device communication
 |
 ├── core/                  # CORE DEVICE AND DATA HANDLING
-│   ├── device.py          # BITalino
+│   ├── device.py          # BITalino hardware abstraction
+│   ├── mock_device.py     # Mock device for testing
 │   ├── signal_type.py     # Signal definitions and transfer functions
 │   └── file_io.py         # Data acquisition and real-time plotting
 |
@@ -166,7 +227,7 @@ Graphical interface for data acquisition and playback
 
 ## Entry points
 
-### 1. **GUI App** (`main.py`)
+### **GUI App** (`main.py`)
 **Use:** Interactive data acquisition with real-time visualization
 
 ```bash
@@ -181,35 +242,12 @@ python3 main.py
 
 ---
 
-### 2. (TBD) **Commandline acquisition**
-**Use:** Quick terminal-based acquisition without GUI
-
-```bash
-python3 acquire.py --mac <MAC_ADDRESS> -c A1,D1
-
-```
-
 ###  Saved data files in `data/recordings/`
 
 **Filename Format:**
 ```
 data_recording_YYYY-MM-DD_HH-MM_<signal_type>.txt
 ```
-
----
-
-## Dependencies
-
-- **Python 3.7+**
-- **PyQt5** - GUI framework
-- **FastAPI/Uvicorn** - REST API backend
-- **Matplotlib** - Real-time plotting
-- **PyBluez** - Bluetooth connectivity
-- **numpy** - Data processing
-- **pyserial** - Serial communication
-- **pandas** - Dataframe parsing and saving
-- **requests** - API client with retries
-- **python-dotenv** - Load `.env` configuration
 
 ---
 
