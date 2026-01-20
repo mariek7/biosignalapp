@@ -1,7 +1,15 @@
 # App structure and user guide
 
 ## Overview
-This is a Python application for acquiring, processing and visualizing biosignals from BITalino devices via Bluetooth.
+This application was developed to provide BITalino data acquisition, visualization, and playback functionality for Linux users. The official OpenSignals software for BITalino currently supports only Windows and macOS. There's no official Linux support atm. 
+
+Custom implementation uses:
+- PyBluez and pySerial for direct Bluetooth RFCOMM and serial communication with BITalino hardware
+- PyQt5 for a native Linux GUI experience
+- FastAPI backend for device communication
+- independent device protocol implementation, handling low-level device communication without dependency on official libraries
+- flexible signal processing with custom transfer functions for ECG, EEG, EMG, EDA, and accelerometer data
+- real-time matplotlib visualization with multi-channel support and playback capabilities
 
 
 ## Quick start
@@ -128,7 +136,7 @@ graph LR
 
 ---
 
-## BITalino Hardware Pin Mapping
+## BITalino hardware pin mapping
 
 | Physical Pin | Software Channel | Type | Use |
 |--------------|------------------|------|-----|
